@@ -6,7 +6,7 @@ const app = new Hono();
 
 app.use('*',serveStatic({root:'./frontend/dist'}));
 app.use('*',serveStatic({root:'./frontend/dist/index.html'}));
-app.use('*',logger());
+// app.use('*',logger());
 app.route('/api/expenses',expensesRoutes)
 
 export default app
