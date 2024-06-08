@@ -16,11 +16,11 @@ const fakeExpenses: Expense[] = [
     {id: 2, title: 'Car Payment', amount: 400},
     {id: 3, title: 'Groceries', amount: 200},
 ]
-const expensesRoutes = new Hono()
+export const expensesRoutes = new Hono()
     .get('/', (c) => {
         return c.json({expenses: fakeExpenses})
     })
-     .get('/total-spents', (c) => {
+     .get('/total-spent', (c) => {
         const total = fakeExpenses.reduce((acc, expense) => acc + expense.amount, 0)
         return c.json({total});
     })
@@ -60,4 +60,3 @@ const expensesRoutes = new Hono()
         return c.json({message: 'Expense deleted'})
     })
 ;
-export default expensesRoutes

@@ -1,12 +1,7 @@
-import {Hono} from 'hono';
-import {logger} from 'hono/logger';
-import expensesRoutes from "./routes/expenses.ts";
-import {serveStatic} from "hono/bun";
-const app = new Hono();
-
-app.use('*',serveStatic({root:'./frontend/dist'}));
-app.use('*',serveStatic({root:'./frontend/dist/index.html'}));
-// app.use('*',logger());
-app.route('/api/expenses',expensesRoutes)
-
-export default app
+import app from './app'
+const server = Bun.serve({
+    port: process.env.PORT || 3000,
+    hostname:'0.0.0.0',
+    fetch: app.fetch
+})
+console.log('Server running on port',server.port)
