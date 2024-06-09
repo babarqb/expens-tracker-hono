@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table"
 import {Skeleton} from "@/components/ui/skeleton"
 
-export const Route = createLazyFileRoute('/expenses/')({
+export const Route = createLazyFileRoute('/_authenticated/expenses/')({
     component: AllExpenses
 })
 

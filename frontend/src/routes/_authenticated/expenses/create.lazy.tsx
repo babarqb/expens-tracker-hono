@@ -6,7 +6,7 @@ import {useForm} from '@tanstack/react-form'
 import {api} from "@/lib/api.ts";
 
 
-export const Route = createLazyFileRoute('/expenses/create')({
+export const Route = createLazyFileRoute('/_authenticated/expenses/create')({
     component: CreateExpense
 })
 
@@ -15,7 +15,7 @@ function CreateExpense() {
     const form = useForm({
         defaultValues: {
             title: '',
-            amount: 0,
+            amount: "0",
         },
         onSubmit: async ({value}) => {
             await new Promise(r => setTimeout(r,3000))
@@ -68,7 +68,7 @@ function CreateExpense() {
                                         value={field.state.value}
                                         onBlur={field.handleBlur}
                                         type="number"
-                                        onChange={(e) => field.handleChange(Number(e.target.value))}
+                                        onChange={(e) => field.handleChange(e.target.value)}
                                     />
                                     {field.state.meta.touchedErrors ? (
                                         <em>{field.state.meta.touchedErrors}</em>
